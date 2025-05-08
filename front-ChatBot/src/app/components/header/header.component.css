@@ -4,7 +4,15 @@
     align-items: center;
     background-color: #0d0d0d;
     padding: 10px 30px; 
+    border-radius: 10px;
   }
+
+  header.header {
+    border-bottom: 2px solid #333; /* ou a cor que quiser */
+    padding-bottom: 1.3rem;
+  }
+  
+
   
   .logo img {
     height: 40px;
