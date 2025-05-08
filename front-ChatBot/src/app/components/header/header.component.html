@@ -1,1 +1,48 @@
-<p>header works!</p>
+<header class="header">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="Logo" />
+    </div>
+    <nav class="nav">
+      <button
+        class="nav-button"
+        routerLink="/"
+        routerLinkActive="primary"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Menu
+      </button>
+  
+      <button
+        class="nav-button"
+        routerLink="/suporte"
+        routerLinkActive="primary"
+      >
+        Suporte
+      </button>
+  
+      <button
+        class="nav-button"
+        routerLink="/fale-conosco"
+        routerLinkActive="primary"
+      >
+        Fale conosco
+      </button>
+  
+      <button
+        class="nav-button"
+        routerLink="/sobre-nos"
+        routerLinkActive="primary"
+      >
+        Sobre nós
+      </button>
+  
+      <button
+        class="nav-button"
+        routerLink="/deslogar"
+        routerLinkActive="primary"
+      >
+        Deslogar
+      </button>
+    </nav>
+  </header>
+  
