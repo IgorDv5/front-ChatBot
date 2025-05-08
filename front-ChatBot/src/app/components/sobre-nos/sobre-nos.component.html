@@ -1,1 +1,12 @@
-nos somos
+<div class="container">
+<h2 class="faq-title ">Perguntas Frequentes</h2>
+
+<div *ngFor="let faq of faqs; let i = index" class="faq-item ">
+  <button class="faq-question" (click)="toggleFaq(i)">
+    {{ faq.pergunta }}
+  </button>
+  <div class="faq-answer" [ngClass]="{ 'open': faq.aberto }">
+    {{ faq.resposta }}
+  </div>
+</div>
+</div>
