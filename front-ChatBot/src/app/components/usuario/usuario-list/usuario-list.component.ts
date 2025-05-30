@@ -1,41 +1,46 @@
-import { Component,ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatTableModule} from '@angular/material/table';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
-export interface PeriodicElement {
-  name: string;
-  status: boolean;
-  onof: boolean;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Lucas Sousa', status: false, onof: false },
-  { name: 'Roberto Torres', status: true, onof: false },
-  { name: 'Linus Tovalds', status: false, onof: true },
-  { name: 'Thomas Forles', status: true, onof: true },
-  { name: 'Boron Sharp', status: false, onof: false },
-];
+import { AuthService } from '../../../auth/auth.service'; 
 
 @Component({
   selector: 'app-usuario-list',
-  imports: [CommonModule,RouterModule,MatTableModule,MatSlideToggleModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatTableModule, MatSlideToggleModule, FormsModule],
   templateUrl: './usuario-list.component.html',
-  styleUrl: './usuario-list.component.css'
+  styleUrl: './usuario-list.component.css',
 })
-export class UsuarioListComponent {
+export class UsuarioListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'status', 'onof', 'acoes'];
-  dataSource = ELEMENT_DATA;
+  dataSource: any[] = [];
 
-   onStatusChange(element: PeriodicElement) {
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.authService.getUsers(token).subscribe(
+        (users) => {
+          this.dataSource = users;
+        },
+        (error) => {
+          console.error('Erro ao buscar usuários:', error);
+        }
+      );
+    }
+  }
+
+  onStatusChange(element: any): void {
     console.log(`${element.name} está ${element.status ? 'Ativo' : 'Desativado'}`);
+    // aqui você pode chamar um PUT/PATCH para atualizar no backend
+  }
 
-   }
-
-    toggleOnOff(element: PeriodicElement) {
+  toggleOnOff(element: any): void {
     element.onof = !element.onof;
     console.log(`${element.name} está ${element.onof ? 'Online' : 'Offline'}`);
+    // também pode atualizar no backend se quiser
   }
 }

@@ -27,4 +27,10 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any>(`${this.apiUrl}/items`, { headers });
   }
+
+  getUsers(token: string): Observable<any[]> {
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<any[]>(`${this.apiUrl}/users`, { headers });
+}
+
 }
