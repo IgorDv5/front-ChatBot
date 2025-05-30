@@ -1,0 +1,52 @@
+<div class="table-wrapper">
+
+    <h1 class="h2 mat-elevation-z8">Lista de Usuarios</h1>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Usuários </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+ <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [(ngModel)]="element.status" [checked]="element.status" (change)="onStatusChange(element)">
+        {{ element.status ? 'Ativo' : 'Desativado' }}
+      </mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="onof">
+    <th mat-header-cell *matHeaderCellDef> Online/Offline </th>
+    <td mat-cell *matCellDef="let element">
+    
+      <i *ngIf="element.onof" class="material-icons check_circle">check_circle</i>
+     
+      <i *ngIf="!element.onof" class="material-icons cancel">cancel</i>
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let element">
+    
+        <a routerLink="edit/{{element.id}}">
+                        <i  class="material-icons edit">edit</i>
+                    </a>
+       <a routerLink="delete/{{element.id}}">
+                        <i class="material-icons delete">delete</i>
+                    </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+</table>
+
+
+</div>
