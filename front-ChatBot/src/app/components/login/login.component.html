@@ -1,26 +1,25 @@
 <div class="login-container">
-    <div class="login-card mat-elevation-z10">
-      <img src="assets/img/logo.png" alt="Logo" class="logo" />
-  
-      <h2 class="brand">Solveme.<span>Bot</span></h2>
-  
-      <form>
-        <label>Email</label>
-        <div class="input-group">
-          <i class="fa fa-envelope"></i>
-          <input type="email" placeholder="SeuEmail@Email.com" />
-        </div>
-  
-        <label>Senha</label>
-        <div class="input-group">
-          <i class="fa fa-lock"></i>
-          <input type="password" placeholder="Senha..." />
-        </div>
-  
-        <a href="#" class="forgot">Esqueci minha senha</a>
-  
-        <button type="submit">CONECTAR</button>
-      </form>
-    </div>
+  <div class="login-card mat-elevation-z10">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+
+    <h2 class="brand">Solveme.<span>Bot</span></h2>
+
+    <form (ngSubmit)="login()">
+      <label>Email</label>
+      <div class="input-group">
+        <i class="fa fa-envelope"></i>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="SeuEmail@Email.com" required />
+      </div>
+
+      <label>Senha</label>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Senha..." required />
+      </div>
+
+      <a href="#" class="forgot">Esqueci minha senha</a>
+
+      <button type="submit">CONECTAR</button>
+    </form>
   </div>
-  
+</div>
