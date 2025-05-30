@@ -26,7 +26,7 @@ export const routes: Routes = [
         component: UsuarioCreateComponent
       },
       {
-        path: 'usuario/edit',
+        path: 'usuario/edit/:id',
         component: UsuarioEditComponent
       },
       {

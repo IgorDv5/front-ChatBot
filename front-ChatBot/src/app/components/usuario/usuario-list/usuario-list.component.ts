@@ -35,12 +35,12 @@ export class UsuarioListComponent implements OnInit {
 
   onStatusChange(element: any): void {
     console.log(`${element.name} está ${element.status ? 'Ativo' : 'Desativado'}`);
-    // aqui você pode chamar um PUT/PATCH para atualizar no backend
+    
   }
 
   toggleOnOff(element: any): void {
     element.onof = !element.onof;
     console.log(`${element.name} está ${element.onof ? 'Online' : 'Offline'}`);
-    // também pode atualizar no backend se quiser
+    
   }
 }

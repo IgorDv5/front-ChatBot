@@ -6,28 +6,18 @@
         <img src="assets\img/fotoexemplo.png" alt="Foto do usuário" class="avatar" />
     </div>
 
-    <form>
-      <label for="nome">Nome Completo</label>
-      <input id="nome" type="text" placeholder="Fulano da Silva" />
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <!-- inputs com formControlName -->
+  <input id="nome" type="text" formControlName="name" placeholder="Fulano da Silva" />
+  <input id="email" type="email" formControlName="email" placeholder="email@empresa.com" />
+  <input id="telefone" type="tel" formControlName="telefone" placeholder="(61) xxxx-xxxx" />
+  <input id="setor" type="text" formControlName="setor" placeholder="Função do User" />
 
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="email@empresa.com" />
+  <div class="botoes">
+    <button type="button" class="btn-cinza" (click)="router.navigate(['/usuarios'])">Cancelar</button>
+    <button type="submit" class="btn-roxo">Alterar</button>
+  </div>
+</form>
 
-      <label for="telefone">Telefone</label>
-      <input id="telefone" type="tel" placeholder="(61) xxxx-xxxx" />
-
-      <label for="senha">Senha</label>
-      <div class="senha-group">
-        <input id="senha" type="password" placeholder="********" />
-      </div>
-
-      <label for="setor">Setor</label>
-      <input id="setor" type="text" placeholder="Função do User" />
-
-      <div class="botoes">
-        <button type="button" class="btn-cinza">Cancelar</button>
-        <button type="submit" class="btn-roxo">Alterar</button>
-      </div>
-    </form>
   </div>
 </div>
